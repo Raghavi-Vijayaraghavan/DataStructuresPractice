@@ -65,8 +65,11 @@ def mergeAndReorder(node1, node2):
     return dummyNode.next
 
 #displayHead(reverseHead(createAndUpdateHead([5,4,3,2,1])))
-head1, head2 = splitList(createAndUpdateHead([5,4,3,2,1]))
-displayHead(mergeAndReorder(head1, head2))
+head1, head2 = splitList(createAndUpdateHead([6,5,4,3,2,1]))
+displayHead(head1)
+print('#####')
+displayHead(head2)
+#displayHead(mergeAndReorder(head1, head2))
             
     
         

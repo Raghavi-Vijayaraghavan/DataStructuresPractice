@@ -1,9 +1,9 @@
 class Node:
-    def __init__ (self, data):
+    def __init__(self, data):
         self.value = data
         self.next = None
 
-class LinkedList():
+class LinkedList:
     def __init__(self):
         self.head = None
 
@@ -25,34 +25,49 @@ def createAndUpdateHead(a):
         head = lL.push(a[i])
     return head
 
-def displayHead(head):
+def displayList(head):
     temp = head
     while temp.next:
         print(temp.value)
         temp = temp.next
     print(temp.value)
 
+
+def msDivide(head):
+    temp = head
+    if not temp.next:
+        return head
+    else:
+        fast, slow = temp.next, temp
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        rHead = slow.next
+        slow.next = None
+        lHead = temp
+        lNode = msDivide(lHead)
+        rNode = msDivide(rHead)
+        return msMerge(lNode, rNode)
+
 def msMerge(head1, head2):
-    if head1 is None or head2 is None:
+    if not head1 or not head2:
         if not head1:
             return head2
         else:
             return head1
     else:
+        displayList(head1)
+        print('#####')
+        displayList(head2)
         temp1, temp2 = head1, head2
         if temp1.value > temp2.value:
             temp1, temp2 = temp2, temp1
-        else:
-            while temp1.next and temp1.next.value <= temp2.value:
-                temp1 = temp1.next
-            head2 = temp1.next
-            temp1.next = temp2
-            return msMerge(head1,head2)
-
-head1 = createAndUpdateHead([0])
-head2 = createAndUpdateHead([2])
-displayHead(msMerge(head1,head2))
-            
-
+        while temp1.next and temp1.next.value <= temp2.value:
+            temp1 = temp1.next
+        head2 = temp1.next
+        temp1.next = temp2
+        return msMerge(head1, head2)
         
-        
+
+head = createAndUpdateHead([5,4,1,2,6])
+displayList(msDivide(head))

@@ -3,7 +3,7 @@ class Node:
         self.value = data
         self.next = None
 
-class LinkedList():
+class LinkedList:
     def __init__(self):
         self.head = None
         
@@ -52,7 +52,7 @@ def addTwoNumbers(a,b):
     return sumHead
             
 
-#displayList(createAndUpdateHead([1,2,3,4]))
+displayList(createAndUpdateHead([1,2,3,4]))
 a = createAndUpdateHead([9,9,9])
 b = createAndUpdateHead([9,9,9])
 #displayList(a)
